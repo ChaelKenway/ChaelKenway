@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《数据库系统原理》第二章（上）笔记 | DreamWalkerStudios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="《数据库系统原理》第二章（上）笔记">
+<meta property="og:url" content="https://chaelkenvin.github.io/ChaelKenvin/2021/03/05/2021-03-05-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8A%EF%BC%89%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="DreamWalkerStudios">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-05T05:28:31.000Z">
+<meta property="article:modified_time" content="2021-03-13T17:16:22.930Z">
+<meta property="article:author" content="ChaelKenvin">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/ChaelKenvin/atom.xml" title="DreamWalkerStudios" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/ChaelKenvin/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/ChaelKenvin/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/ChaelKenvin/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/ChaelKenvin/" id="logo">DreamWalkerStudios</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/ChaelKenvin/">Home</a>
+        
+          <a class="main-nav-link" href="/ChaelKenvin/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/ChaelKenvin/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chaelkenvin.github.io/ChaelKenvin"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2021-03-05-《数据库系统原理》第二章（上）笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/ChaelKenvin/2021/03/05/2021-03-05-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8A%EF%BC%89%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-03-05T05:28:31.000Z" itemprop="datePublished">2021-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/ChaelKenvin/categories/%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B/">《数据库系统原理》</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《数据库系统原理》第二章（上）笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <style>
+
+</style>
+
+<span id="more"></span>
+
+<h1 id="第二章-关系数据模型（上）"><a href="#第二章-关系数据模型（上）" class="headerlink" title="第二章 关系数据模型（上）"></a>第二章 关系数据模型（上）</h1><h2 id="2-1-数据模型概述"><a href="#2-1-数据模型概述" class="headerlink" title="2.1 数据模型概述"></a>2.1 数据模型概述</h2><p>  数据模型是对现实世界数据特的模拟和抽象。</p>
+<p>  三要素：</p>
+<ol>
+<li>数据结构（静态特性）：描述组成对象和对象间的联系。</li>
+<li>数据操作（动态特性）：查询和更新，后者包括插入、删除和修改。</li>
+<li>数据上的约束：约束条件是一组完整性规则（数据及其联系所具有的制约和依存规则）的集合。例如一周中每一天只能是 1-7 的整数。<br><strong>关系数据模型</strong>是重点。</li>
+</ol>
+<p>  其他数据模型有层次、网状。</p>
+<hr>
+<h2 id="2-2-关系模型基础"><a href="#2-2-关系模型基础" class="headerlink" title="2.2 关系模型基础"></a>2.2 关系模型基础</h2><h3 id="关系模型的组成"><a href="#关系模型的组成" class="headerlink" title="关系模型的组成"></a>关系模型的组成</h3><ol>
+<li><p>关系数据结构：数据的逻辑结构是一张<strong>二维表</strong>，由行和列组成。</p>
+<p>基本概念：</p>
+<ol>
+<li><p>关系</p>
+<p>一个表格的名字，描述事物和事物间的联系。<br>例如“关系movies”：描述电影信息的二维表。</p>
+</li>
+<li><p>属性</p>
+<p>关系的列命名。也就是第一行中每个元素。</p>
+</li>
+<li><p>模式</p>
+<p>关系名和其属性的组合。是一个无序集合。</p>
+<p>表示方式： 关系名（属性1， 属性2， 属性3）<br>如 Movies(title, year, length, filmType)</p>
+<p>一项关系模型设计包括一个或多个关系模式，这个关系模式的<strong>集合</strong>叫做<strong>关系数据库模式</strong>（<strong>数据库模式</strong>）。</p>
+<p>如 学生（学号，姓名） 课程（课程号，课程名，学分） 选修（学号，课程名，成绩）</p>
+</li>
+<li><p>域</p>
+<p>属性的数据类型、<strong>取值范围</strong>。</p>
+<p>关系Movies中，title的域是字符串集合，人的年龄是0-160.</p>
+<p>可以把域标注在关系模式中。</p>
+<p>如 Movies(title: string, year: interger, length: interger, filmType: string)</p>
+</li>
+<li><p>元组</p>
+<p>关系中除去属性名（首行）外的其他行。一行是一个元组。</p>
+<p>元组中每一列的属性要对应第一行的每一列，且其域是相同的。</p>
+</li>
+<li><p>键</p>
+<p>是关系的某个属性（组），可以唯一确定一个元组，且若从属性组中去掉任何一个属性，他就不具有这一性质了。</p>
+<p>如 Movies(<u>title</u>, <u>year</u>, length, filmType) 的键是属性组(title, year)，意味着用标题和年份可以唯一确定一部电影。</p>
+<p>同理也可以用学号来唯一确定一个华大学生。</p>
+</li>
+<li><p>候选码</p>
+<p>如果有多个属性（组）都能唯一标识关系的元组，若从其中去掉任何一个属性，它都会失去这一性质，这些属性（组）就是关系的候选码。</p>
+<ul>
+<li>主属性： 包含在候选码中的属性。</li>
+<li>非主属性（非码属性）： 不包含在任何候选码中的属性。</li>
+</ul>
+</li>
+<li><p>主码（主键）</p>
+<p>在若干个候选码中指定的作为码（键）的属性（组）。</p>
+<p><strong>每个表只能有唯一主键，且不为空。</strong></p>
+<p>主键可以唯一确定一个元组，保证关系实例上任何两个元组在键上取值不同。</p>
+<p>标记方式： <u>下划线</u></p>
+<p>如 Movies(<u>title</u>, <u>year</u>, length, filmType) 的主键是属性组(title, year)。</p>
+</li>
+<li><p>全码</p>
+<p>如果一个关系的<strong>所有属性在一起</strong>才能构成关系的码，则成为全码。</p>
+</li>
+<li><p>外键（外部关键字）</p>
+<p>将一个表的<strong>主键</strong>作为数据之间联系的纽带放到<strong>另一个表</strong>中。</p>
+<p>例如：</p>
+<p>–学生表–</p>
+<table>
+<thead>
+<tr>
+<th align="center">学号</th>
+<th align="center">姓名</th>
+<th align="center">性别</th>
+<th align="center">出生年月</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">01001</td>
+<td align="center">张三</td>
+<td align="center">男</td>
+<td align="center">1999-07</td>
+</tr>
+<tr>
+<td align="center">01002</td>
+<td align="center">李四</td>
+<td align="center">男</td>
+<td align="center">1999-08</td>
+</tr>
+</tbody></table>
+<p>“学号”是学生表的主键。</p>
+<p>–成绩表–</p>
+<table>
+<thead>
+<tr>
+<th align="center">学号</th>
+<th align="center">课程号</th>
+<th align="center">成绩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">01001</td>
+<td align="center">TW-MO-1</td>
+<td align="center">80</td>
+</tr>
+<tr>
+<td align="center">01001</td>
+<td align="center">DM-MO-1</td>
+<td align="center">80</td>
+</tr>
+<tr>
+<td align="center">01002</td>
+<td align="center">TW-MO-1</td>
+<td align="center">90</td>
+</tr>
+<tr>
+<td align="center">01002</td>
+<td align="center">DM-MO-1</td>
+<td align="center">90</td>
+</tr>
+</tbody></table>
+<p>“学号”是成绩表的<strong>外键</strong></p>
+</li>
+<li><p>关系的等价描述</p>
+<p> 关系是元组的集合，集合是无序的，所以<strong>交换列的位置后</strong>关系仍然是等价的。</p>
+</li>
+<li><p>关系实例</p>
+<p> 一个给定关系中元组的集合。</p>
+<ul>
+<li>当前实例： 通常数据库系统仅仅维护关系的一个版本，即关系的“当前”元组集合。</li>
+<li>模式和实例的区别：<ul>
+<li>模式 = 关系名（关系属性1，属性2 ……）是相对不变的</li>
+<li>实例 = 元组的集合，即取出不同的行，经常会变。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>关系操作集合</p>
+<p>查询，插入，删除，修改等。</p>
+</li>
+<li><p>关系完整性约束</p>
+<ul>
+<li><p>实体完整性约束（必须）</p>
+<p>关系模型中主码是唯一标识，主属性不能取空。</p>
+</li>
+<li><p>参照完整性约束（必须）</p>
+<p>F是关系R中非码的一个或一组属性，但又是另一个关系S的主码。则F是关系R的<strong>外码</strong>，称R为<strong>参照关系</strong>，S为<strong>被参照关系</strong>。</p>
+<p>R中每个元组在F上的值必须为：（参照完整性规则）</p>
+<ul>
+<li>空值（F的每个属性都是空）</li>
+<li>等于S中某个元组的主码值</li>
+</ul>
+<p>参照完整性规则是定义外码与主码之间的引用规则。</p>
+</li>
+<li><p>用户定义的完整性（自行定义）</p>
+<p>针对某一具体的数据必须满足的<strong>语义</strong>要求。</p>
+<p>如 学生信息（学号，姓名，性别，年龄）中性别只能为“男”或“女”，年龄只能是大于0的整数。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-3-在SQL中定义关系模式"><a href="#2-3-在SQL中定义关系模式" class="headerlink" title="2.3 在SQL中定义关系模式"></a>2.3 在SQL中定义关系模式</h2><h3 id="SQL的特点"><a href="#SQL的特点" class="headerlink" title="SQL的特点"></a>SQL的特点</h3><ul>
+<li><p>综合统一</p>
+<p>SQL的核心</p>
+<ul>
+<li><p>数据定义语言</p>
+<p>数据库的逻辑结构，对关系模式一级的定义，包括基本表、视图和索引的定义。</p>
+</li>
+<li><p>数据查询语言</p>
+</li>
+<li><p>数据操纵语言</p>
+<p>对关系模式中的具体数据的增、删、改等操作。</p>
+</li>
+<li><p>数据控制语言</p>
+<p>数据访问权限的控制。</p>
+</li>
+</ul>
+</li>
+<li><p>高度非过程化</p>
+<p>只需要知道“做什么”，无需了解存取路径</p>
+</li>
+<li><p>用同一种语法结构提供两种使用方式</p>
+<ul>
+<li>自含式语言：独立用于联机交互的使用方式，用户可以在终端键盘上直接键入SQL命令对数据库进行操作。</li>
+<li>嵌入式语言：SQL语句能嵌入到高级语言程序中。</li>
+<li>但是两种方式下，SQL的语法结构基本一致。</li>
+</ul>
+</li>
+<li><p>语言简洁，易学易用</p>
+<p>数据定义、操纵、控制的核心功能只用了9个动词：</p>
+<ul>
+<li>CREATE</li>
+<li>DROP</li>
+<li>ALTER</li>
+<li>SELECT</li>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+<li>GRANT</li>
+<li>REVOKE</li>
+</ul>
+</li>
+</ul>
+<p>  SQL的三个主要标准</p>
+<ol>
+<li>ANSI（美国国家标准机构）SQL</li>
+<li>SQL-92(SQL2)</li>
+<li>SQL-99(SQL3)</li>
+</ol>
+<p>  基本数据类型</p>
+<ol>
+<li><p>字符串</p>
+<ul>
+<li><p>CHAR(n) </p>
+<p>n个字符的<strong>固定长度</strong>的字符数据，实际占用不足n个的用空格填充。最大长度为8000字符。</p>
+<p>索引效率高，但会浪费空间。</p>
+</li>
+<li><p>VARCHAR(n) </p>
+<p>最多n个字符的<strong>可变长度</strong>字符数据，存储空间是该字符数据其实长度+1。最大长度为8000字符。</p>
+</li>
+<li><p>TEXT</p>
+<p>可变长度字符数据，最大为(2^31-1)个字符</p>
+</li>
+</ul>
+</li>
+<li><p>unicode字符串</p>
+<ul>
+<li><p>unicode将所有字符用两个字节表示，解决了字符集不兼容问题。缺点在于存储英文（1字节）时需要用2字节。</p>
+</li>
+<li><p>NCHAR</p>
+<p>固定长度，最大4000字符。</p>
+</li>
+<li><p>NVARCHAR</p>
+<p>可变长度，最大4000字符。</p>
+</li>
+<li><p>NTEXT</p>
+<p>可变长度，最大(2^30-1)字符。</p>
+</li>
+</ul>
+</li>
+<li><p>二进制</p>
+<ul>
+<li><p>BINARY</p>
+<p>固定长度，最大8000B。</p>
+</li>
+<li><p>VARBINARY</p>
+<p>可变长度，最大8000B。</p>
+</li>
+<li><p>IMAGE</p>
+<p>可变长度，可以存储照片、图片，最大(2^31-1)字节。</p>
+</li>
+</ul>
+</li>
+<li><p>整型数据</p>
+<ul>
+<li><p>BIGINT</p>
+<p>-2^63 ~ 2^63-1</p>
+</li>
+<li><p>INT</p>
+<p>-2^31 ~ 2^31-1</p>
+</li>
+<li><p>SMALLINT</p>
+<p>-2^15(-32768) ~ 2^15-1(32767)</p>
+</li>
+<li><p>TINYINT</p>
+<p>0 ~ 255</p>
+</li>
+<li><p>BIT（也可以模拟bool）</p>
+<p>1 / 0</p>
+</li>
+</ul>
+</li>
+<li><p>浮点数值</p>
+<ul>
+<li><p>精确浮点型</p>
+<ul>
+<li><p>DECIMAL(n, d)</p>
+<p>有n位数字（不含小数点）的十进制数，小数点右边有d位小数。</p>
+</li>
+<li><p>NUMERIC</p>
+<p>功能上等同于前者。</p>
+</li>
+</ul>
+</li>
+<li><p>精确浮点型</p>
+<ul>
+<li><p>FLOAT</p>
+<p>-1.79e+308 ~ 1.79e+308</p>
+</li>
+<li><p>REAL</p>
+<p>-3.4e+38 ~ 3.4e+38</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>日期时间数据</p>
+<ul>
+<li><p>DATETIME</p>
+<p>1753/1/1 ~ 9999/12/31的日期和时间，精确到3%秒。</p>
+<p>每个值要求8B.</p>
+</li>
+<li><p>SMALLDATETIME</p>
+<p>1900/1/1 ~ 2079/6/6的日期和时间，精确到分钟。</p>
+<p>每个要求4B.</p>
+</li>
+</ul>
+</li>
+<li><p>货币数据</p>
+<ul>
+<li><p>MONEY </p>
+<p>-2^63 ~ 2^63-1</p>
+<p>精确到货币单位的千分之十。</p>
+</li>
+<li><p>SMALLMONEY</p>
+<p>-214748.3648 ~ 214748.3647</p>
+<p>精确到货币单位的千分之十</p>
+</li>
+</ul>
+</li>
+<li><p>其他数据</p>
+</li>
+</ol>
+<h3 id="SQL五个基本操作"><a href="#SQL五个基本操作" class="headerlink" title="SQL五个基本操作"></a>SQL五个基本操作</h3><ol>
+<li>定义基本表 CREATE TABLE</li>
+<li>修改基本表的定义 ALTER TABLE</li>
+<li>删除基本表 DROP TABLE</li>
+<li>创建索引 CREATE INDEX</li>
+<li>删除索引 DROP INDEX</li>
+</ol>
+<p>  参数说明</p>
+<ul>
+<li>圆括号：内容为必选参数，可有多个选项。</li>
+<li>放口号：内容为可选项，用户根据需要使用。</li>
+<li>竖线：参数间“或”的关系。</li>
+<li>省略号：重复前面的语法单元。</li>
+<li>尖括号：要求的参数。</li>
+<li>方括号和省略号[……] 同样选项还可以重复多遍。</li>
+</ul>
+<h3 id="完整性约束条件"><a href="#完整性约束条件" class="headerlink" title="完整性约束条件"></a>完整性约束条件</h3><p>  如果涉笔到多个属性列，则必须定义在<strong>表级</strong>上，否则可以定义在列级或表级上。</p>
+<ol>
+<li><p>NOT NULL / NULL</p>
+<p>前者不允许存在空值，给主属性；后者可以给非主属性。</p>
+</li>
+<li><p>UNIQUE</p>
+<p>唯一性，不允许某一列或某几列有重复的属性值。</p>
+</li>
+<li><p>DEFAULT</p>
+<p>默认值约束，对特定列没有指定，则使用DEFAULT后面的默认值。</p>
+</li>
+<li><p>CHECK</p>
+<p>检验约束，插入值或更新至必须满足这个条件。</p>
+</li>
+<li><p>PRIMARY KEY</p>
+<p>主键约束，表中的主键可以是一列或多列，此约束使得主键的数值在每一行中各不相同。约束的列不能为空。</p>
+</li>
+<li><p>FOREIGN KEY</p>
+<p>外键约束，表中的一列或多列，所包含的值与同一个表或其他表中PRIMARY KEY定义的主键值相匹配。</p>
+</li>
+</ol>
+<h3 id="CREATE-TABLE"><a href="#CREATE-TABLE" class="headerlink" title="CREATE TABLE"></a>CREATE TABLE</h3><p>  CREATE TABLE &lt;表名&gt; (</p>
+<p>  &lt;列名&gt;&lt;数据类型&gt;[&lt;列级完整性约束条件&gt;],</p>
+<p>  &lt;列名&gt;&lt;数据类型&gt;[&lt;列级完整性约束条件&gt;],</p>
+<p>  &lt;列名&gt;&lt;数据类型&gt;[&lt;列级完整性约束条件&gt;],</p>
+<p>  ……</p>
+<p>  [&lt;表级完整性约束条件&gt;] );</p>
+<p>  如果将一个字段指定为NOT NULL，则必须是有效的数据。</p>
+<p>  CREATE TABLE Movies(</p>
+<p>  ​     title         CHAR(100),</p>
+<p>  ​     year         INT,</p>
+<p>  ​     length       INT,</p>
+<p>  ​     genre       CHAR(10),</p>
+<p>  ​     studioName CHAR(30),</p>
+<p>  ​     producer#  INT</p>
+<pre><code>);
+</code></pre>
+<h3 id="ALTER-TABLE"><a href="#ALTER-TABLE" class="headerlink" title="ALTER TABLE"></a>ALTER TABLE</h3><p>  ALTER TABLE&lt;表名&gt;</p>
+<p>  [ADD &lt;新列名&gt; &lt;数据类型&gt; [完整性约束] ]</p>
+<p>  [DROP &lt;COLUMN 列名&gt; ]</p>
+<p>  [DROP &lt;完整性约束名&gt; ]</p>
+<p>  [ALTER COLUMN &lt;列名&gt; &lt;数据类型&gt; ];</p>
+<p>  不能同时添加或删除一个以上的字段或索引。</p>
+<h3 id="DROP-TABLE"><a href="#DROP-TABLE" class="headerlink" title="DROP TABLE"></a>DROP TABLE</h3><p>  DROP TABLE &lt;表名&gt; [RESTRICT | CASCADE ];</p>
+<p>   删除&lt;表名&gt;指定的表。</p>
+<ul>
+<li>若选择RESTRICT，则要删除的表不能被其他表的约束</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chaelkenvin.github.io/ChaelKenvin/2021/03/05/2021-03-05-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8A%EF%BC%89%E7%AC%94%E8%AE%B0/" data-id="cko30tzsk000awg9346ul0bc0" data-title="《数据库系统原理》第二章（上）笔记" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/ChaelKenvin/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ChaelKenvin/2021/03/14/2021-03-14-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8B%EF%BC%89%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《数据库系统原理》第二章（下）笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ChaelKenvin/2021/02/27/2021-02-27-%E3%80%8A%E6%AD%A5%E6%AD%A5%E5%9B%B4%E8%90%A5%E3%80%8B%E9%87%8D%E5%88%B6%E7%89%88%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《步步围营》重制版开发笔记（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/ChaelKenvin/categories/%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B/">《数据库系统原理》</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/ChaelKenvin/tags/%E4%BD%9C%E5%93%81/" style="font-size: 15px;">作品</a> <a href="/ChaelKenvin/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/ChaelKenvin/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a> <a href="/ChaelKenvin/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 15px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/04/28/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/03/21/2021-03-21-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%B8%80%EF%BC%89%E7%AC%94%E8%AE%B0/">《数据库系统原理》第三章（一）笔记</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/03/14/2021-03-14-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8B%EF%BC%89%E7%AC%94%E8%AE%B0/">《数据库系统原理》第二章（下）笔记</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/03/05/2021-03-05-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8A%EF%BC%89%E7%AC%94%E8%AE%B0/">《数据库系统原理》第二章（上）笔记</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/02/27/2021-02-27-%E3%80%8A%E6%AD%A5%E6%AD%A5%E5%9B%B4%E8%90%A5%E3%80%8B%E9%87%8D%E5%88%B6%E7%89%88%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">《步步围营》重制版开发笔记（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 ChaelKenvin<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/ChaelKenvin/" class="mobile-nav-link">Home</a>
+  
+    <a href="/ChaelKenvin/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/ChaelKenvin/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/ChaelKenvin/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/ChaelKenvin/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

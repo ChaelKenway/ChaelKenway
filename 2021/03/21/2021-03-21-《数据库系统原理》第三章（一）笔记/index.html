@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《数据库系统原理》第三章（一）笔记 | DreamWalkerStudios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="《数据库系统原理》第三章（一）笔记">
+<meta property="og:url" content="https://chaelkenvin.github.io/ChaelKenvin/2021/03/21/2021-03-21-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%B8%80%EF%BC%89%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="DreamWalkerStudios">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-21T02:33:53.000Z">
+<meta property="article:modified_time" content="2021-03-21T02:49:13.569Z">
+<meta property="article:author" content="ChaelKenvin">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/ChaelKenvin/atom.xml" title="DreamWalkerStudios" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/ChaelKenvin/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/ChaelKenvin/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/ChaelKenvin/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/ChaelKenvin/" id="logo">DreamWalkerStudios</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/ChaelKenvin/">Home</a>
+        
+          <a class="main-nav-link" href="/ChaelKenvin/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/ChaelKenvin/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://chaelkenvin.github.io/ChaelKenvin"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-2021-03-21-《数据库系统原理》第三章（一）笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/ChaelKenvin/2021/03/21/2021-03-21-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%B8%80%EF%BC%89%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-03-21T02:33:53.000Z" itemprop="datePublished">2021-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/ChaelKenvin/categories/%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B/">《数据库系统原理》</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《数据库系统原理》第三章（一）笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <style>
+
+</style>
+
+
+
+<span id="more"></span>
+
+<h1 id="第三章-关系数据库设计理论"><a href="#第三章-关系数据库设计理论" class="headerlink" title="第三章 关系数据库设计理论"></a>第三章 关系数据库设计理论</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第三章=函数依赖+规范化</p>
+<p>函数依赖：对关系“键”的范化。</p>
+<p>规范化：使用函数依赖定义关系模式的规范形式，可以将关系分解为两个或多个关系来消除异常。</p>
+<h2 id="3-1函数依赖"><a href="#3-1函数依赖" class="headerlink" title="3.1函数依赖"></a>3.1函数依赖</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>如果R的两个元组在关系A1A2…An上一致，那么它们必定在其他属性B1B2…Bn上一致。</strong></p>
+<p>记作A1A2…An -&gt; B1B2…Bn.称作A1A2…An函数决定B1B2…Bn， B1B2…Bn函数依赖A1A2…An。</p>
+<p>A1A2…An -&gt; B1B2…Bn等价于A1A2…An-&gt;B1,A1A2…An-&gt;B2…A1A2…An-&gt;Bn.（分解规则）</p>
+<p>函数依赖针对<em>关系模式</em>，而不是特定的<em>关系实例</em>。</p>
+<h3 id="关系的键"><a href="#关系的键" class="headerlink" title="关系的键"></a>关系的键</h3><p>定义与证明方式</p>
+<ul>
+<li>属性或属性集合{A1, A2…An}函数决定关系的<strong>所有</strong>其他属性。只要键相同，其他都要相同。</li>
+<li>去掉其中任意一个元素，它都不是键，即键必须是<strong>最小的</strong>。</li>
+</ul>
+<p>主键：在很多个键中选择一个作为主键。</p>
+<h3 id="超键"><a href="#超键" class="headerlink" title="超键"></a>超键</h3><p>键的超集（若A⊂B，则B是A的超集；A⊆B，则B是A的真超集），必然函数决定关系中所有其他属性的属性集。</p>
+<p>键本身是一个超键，但超键不一定是键（不需要满足”最小化“）。</p>
+<h2 id="3-2函数依赖的规则"><a href="#3-2函数依赖的规则" class="headerlink" title="3.2函数依赖的规则"></a>3.2函数依赖的规则</h2><h3 id="两个基本概念"><a href="#两个基本概念" class="headerlink" title="两个基本概念"></a>两个基本概念</h3><ul>
+<li><p>函数依赖集S<strong>蕴含于</strong>函数依赖集T（S从T中推断）</p>
+<p>T中所有函数依赖的关系实例集也必然同时满足S中所有的函数依赖。</p>
+</li>
+<li><p>函数依赖集S<strong>等价于</strong>函数依赖集T</p>
+<p>S和T互相可以推断。</p>
+</li>
+</ul>
+<h3 id="分解规则"><a href="#分解规则" class="headerlink" title="分解规则"></a>分解规则</h3><p>若A1A2…An-&gt;B1B2…Bm 则A1A2…Ab-&gt;Bi (i=1, 2…m)</p>
+<p>从函数依赖的定义出发，A1A2…An能决定右边所有的，则也能单独决定一个。</p>
+<p><strong>分解规则只能对函数依赖的右边进行分解。</strong></p>
+<h3 id="组合规则"><a href="#组合规则" class="headerlink" title="组合规则"></a>组合规则</h3><p>若A1A2…Ab-&gt;Bi (i=1, 2…m) 则A1A2…An-&gt;B1B2…Bm</p>
+<p>分解规则的逆运算。</p>
+<h3 id="平凡函数依赖的三个概念"><a href="#平凡函数依赖的三个概念" class="headerlink" title="平凡函数依赖的三个概念"></a>平凡函数依赖的三个概念</h3><p>A1A2…An-&gt;B1B2…Bm</p>
+<ul>
+<li><p>平凡函数依赖</p>
+<p>当且仅当右边的属性集合是左边集合的<strong>子集</strong>。右边有的，左边一定有。</p>
+<p>这样的函数依赖是<strong>恒真</strong>的。</p>
+</li>
+<li><p>非平凡函数依赖</p>
+<p>右边至少有一个属性不在左边。</p>
+</li>
+<li><p>完全非平凡函数依赖</p>
+<p>右边的都不在左边。</p>
+</li>
+</ul>
+<h3 id="平凡依赖规则"><a href="#平凡依赖规则" class="headerlink" title="平凡依赖规则"></a>平凡依赖规则</h3><p>总是可以从右边除去已经在左边出现的属性。</p>
+<p>即将B1B2…Bm改为B1B2…Bm - A1A2…An</p>
+<h3 id="传递规则"><a href="#传递规则" class="headerlink" title="传递规则"></a>传递规则</h3><p>A1A2…An-&gt;B1B2…Bm，B1B2…Bm-&gt;C1C2…Ck =&gt;  A1A2…An-&gt;C1C2…Ck（此处再使用平凡依赖规则）</p>
+<h3 id="阿姆斯特朗公理系统"><a href="#阿姆斯特朗公理系统" class="headerlink" title="阿姆斯特朗公理系统"></a>阿姆斯特朗公理系统</h3><ul>
+<li><p>F1自反性：若Y是X的子集，则X-&gt;Y为F所蕴涵。</p>
+<p>F1’: X-&gt;X</p>
+</li>
+<li><p>F2增广性：若X-&gt;Y为F所蕴涵，则XZ-&gt;YZ为F所蕴涵。</p>
+<p>F2’: XZ-&gt;Y</p>
+</li>
+<li><p>F3传递性：若X-&gt;Y, Y-&gt;Z为F所蕴涵，则X-&gt;Z为F所蕴涵。</p>
+</li>
+</ul>
+<h3 id="属性的闭包"><a href="#属性的闭包" class="headerlink" title="属性的闭包"></a>属性的闭包</h3><p>A是一个属性依赖的集合，S是一个函数依赖的集合。若有属性集合B，包含<strong>所有</strong>满足下述条件的属性Bi(i=1, 2…m)</p>
+<p>A1A2…An -&gt; Bi 蕴涵于函数依赖S</p>
+<p>成属性集合B是<strong>属性集合A对于函数依赖集S的闭包</strong>。记作A<sub>s</sub><sup>+</sup>.</p>
+<h3 id="闭包算法"><a href="#闭包算法" class="headerlink" title="闭包算法"></a>闭包算法</h3><ol>
+<li>将待求闭包的属性集合X初始化为{A1, A2…An}（平凡函数依赖）</li>
+<li>在S中寻找B1B2…Bm -&gt; C(其中B1B2…Bm在X中而C不在X中)，将C加入X中。</li>
+<li>反复第二部，直到不能再有其他属性加入X。</li>
+<li>所得X就是A<sub>s</sub><sup>+</sup>。</li>
+</ol>
+<p>求出闭包后，可以判断给定的某个函数依赖能否由S推断而来。</p>
+<h3 id="闭包算法判定"><a href="#闭包算法判定" class="headerlink" title="闭包算法判定"></a>闭包算法判定</h3><p>当且仅当B1B2…Bm都在A<sub>s</sub><sup>+</sup>中，则函数依赖A-&gt;B1B2…Bm蕴涵于函数依赖集合S。</p>
+<p>判断函数依赖A1A2…An-&gt;B能否由S推断出来：</p>
+<ol>
+<li>用S计算A<sub>s</sub><sup>+</sup></li>
+<li>若B在A<sub>s</sub><sup>+</sup>中，则可以；不在则不能。</li>
+</ol>
+<h3 id="闭包和键的关系"><a href="#闭包和键的关系" class="headerlink" title="闭包和键的关系"></a>闭包和键的关系</h3><p>如果{A1, A2…An}是一个关系的键</p>
+<ul>
+<li>A<sub>s</sub><sup>+</sup>应包含关系的全部属性。</li>
+<li>如果从{A1, A2…An}移除任意一个属性，得到X，则X<sub>s</sub><sup>+</sup>不可能包含关系的所有属性。</li>
+</ul>
+<h3 id="函数依赖集的闭包"><a href="#函数依赖集的闭包" class="headerlink" title="函数依赖集的闭包"></a>函数依赖集的闭包</h3><p>F以及所有被F逻辑蕴涵的函数依赖的集合成为函数依赖集F的闭包，记为F<sup>+</sup>.</p>
+<p>可以利用计算属性闭包的方法判断给定函数依赖是否被F蕴涵。</p>
+<h3 id="函数依赖基本集"><a href="#函数依赖基本集" class="headerlink" title="函数依赖基本集"></a>函数依赖基本集</h3><ul>
+<li>基本集：一个给定的函数依赖及能推出关系中其他所有函数依赖集。</li>
+<li>最小基本集：基本集任意去掉一个后都不能导出关系上所有依赖。</li>
+</ul>
+<p><strong>最小基本集的判定</strong></p>
+<ol>
+<li>F中任意一个函数依赖右边只有一个属性。</li>
+<li>F中没有多余的函数依赖。不存在X-&gt;A使 得F-{X-&gt;A}等价。</li>
+<li>F中每个函数依赖的<strong>左边</strong>没有多余的属性</li>
+</ol>
+<p>最小基本集的算法</p>
+<ol>
+<li>右边属性单一化（分解规则）</li>
+<li>去掉左边多余的属性</li>
+<li>去掉多余的函数依赖</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://chaelkenvin.github.io/ChaelKenvin/2021/03/21/2021-03-21-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%B8%80%EF%BC%89%E7%AC%94%E8%AE%B0/" data-id="cko30tzsp000fwg933s654upx" data-title="《数据库系统原理》第三章（一）笔记" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/ChaelKenvin/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ChaelKenvin/2021/04/28/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/ChaelKenvin/2021/03/14/2021-03-14-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8B%EF%BC%89%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《数据库系统原理》第二章（下）笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/ChaelKenvin/categories/%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B/">《数据库系统原理》</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E4%BD%9C%E5%93%81/" rel="tag">作品</a></li><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a></li><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/ChaelKenvin/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/ChaelKenvin/tags/%E4%BD%9C%E5%93%81/" style="font-size: 15px;">作品</a> <a href="/ChaelKenvin/tags/%E5%88%86%E4%BA%AB/" style="font-size: 10px;">分享</a> <a href="/ChaelKenvin/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">学习笔记</a> <a href="/ChaelKenvin/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 15px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/ChaelKenvin/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/04/28/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/03/21/2021-03-21-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%88%E4%B8%80%EF%BC%89%E7%AC%94%E8%AE%B0/">《数据库系统原理》第三章（一）笔记</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/03/14/2021-03-14-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8B%EF%BC%89%E7%AC%94%E8%AE%B0/">《数据库系统原理》第二章（下）笔记</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/03/05/2021-03-05-%E3%80%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%88%E4%B8%8A%EF%BC%89%E7%AC%94%E8%AE%B0/">《数据库系统原理》第二章（上）笔记</a>
+          </li>
+        
+          <li>
+            <a href="/ChaelKenvin/2021/02/27/2021-02-27-%E3%80%8A%E6%AD%A5%E6%AD%A5%E5%9B%B4%E8%90%A5%E3%80%8B%E9%87%8D%E5%88%B6%E7%89%88%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">《步步围营》重制版开发笔记（二）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 ChaelKenvin<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/ChaelKenvin/" class="mobile-nav-link">Home</a>
+  
+    <a href="/ChaelKenvin/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/ChaelKenvin/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/ChaelKenvin/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/ChaelKenvin/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
